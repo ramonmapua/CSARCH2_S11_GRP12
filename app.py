@@ -13,4 +13,4 @@ with st.container():
     st.write("Cache blocks = ", cache_blocks)
     st.write("Cache line = ", cache_line)
     st.write("Read policy = Non-Load Through")
-    memory_blocks = st.number_input("Enter number of memory blocks: ")
+    memory_blocks = st.number_input("Enter number of memory blocks: ", min_value=1, value=None, placeholder="Enter a number...")
