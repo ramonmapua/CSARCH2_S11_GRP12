@@ -2,6 +2,7 @@ import streamlit as st
 
 cache_blocks = 32
 cache_line = 16
+memory_blocks = 0
 
 ## streamlit page set-up
 st.set_page_config(page_title="Group 12 Cache Project", page_icon=":floppy_disk:")
