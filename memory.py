@@ -1,19 +1,19 @@
 from collections import deque
 
-def create_memory(cache_line, memory_blocks):
-    memory_size = cache_line * memory_blocks
+def create_memory(cache_lines, memory_blocks):
+    memory_size = cache_lines * memory_blocks
     memory_queue = deque(maxlen=memory_size)
 
     # Fill memory with Zeroes
-    initial_value = 0
+    initial_value = None
     for _ in range(memory_blocks):
-        memory_queue.append([initial_value] * cache_line)
+        memory_queue.append([initial_value] * cache_lines)
 
     # Access Address in Memory
     # Zeroed Index
     def access_memory(address):
         if address < memory_size:
-            block_index, offset = divmod(address, cache_line)
+            block_index, offset = divmod(address, cache_lines)
             return memory_queue[block_index][offset]
         else:
             raise ValueError("Address out of bounds")
@@ -21,7 +21,7 @@ def create_memory(cache_line, memory_blocks):
     # Update Address in Memory
     def update_memory(address, value):
         if address < memory_size:
-            block_index, offset = divmod(address, cache_line)
+            block_index, offset = divmod(address, cache_lines)
             memory_queue[block_index][offset] = value
         else:
             raise ValueError("Address out of bounds")

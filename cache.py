@@ -4,7 +4,7 @@ def create_cache(cache_blocks, cache_lines):
     cache_queue = deque(maxlen=cache_blocks)
 
     # Initialize with Zeroes
-    initial_value = 0
+    initial_value = None
     for _ in range(cache_blocks):
         cache_queue.append([initial_value] * cache_lines)
 
@@ -14,14 +14,14 @@ def create_cache(cache_blocks, cache_lines):
         if block_index < cache_blocks and line_index < cache_lines:
             return cache_queue[block_index][line_index]
         else:
-            raise ValueError("Invalid cache block or line index")
+            raise ValueError("Invalid cache block or line index: (" + str(block_index) + ", " + str(line_index) + ")")
 
     # Update Block, Line on Cache
     def update_cache(block_index, line_index, value):
         if block_index < cache_blocks and line_index < cache_lines:
             cache_queue[block_index][line_index] = value
         else:
-            raise ValueError("Invalid cache block or line index")
+            raise ValueError("Invalid cache block or line index: (" + str(block_index) + ", " + str(line_index) + ")")
 
     # Display Entire Cache
     def display_cache():
