@@ -1,10 +1,48 @@
+from contextlib import contextmanager
+from io import StringIO
+from streamlit.report_thread import REPORT_CONTEXT_ATTR_NAME
+from threading import current_thread
+import sys
 import streamlit as st
+
 import memory as mem
 import cache as cch
 
 cache_blocks = 32
 cache_lines = 16
 memory_blocks = 0
+
+@contextmanager
+def st_redirect(src, dst):
+    placeholder = st.empty()
+    output_func = getattr(placeholder, dst)
+
+    with StringIO() as buffer:
+        old_write = src.write
+
+        def new_write(b):
+            if getattr(current_thread(), REPORT_CONTEXT_ATTR_NAME, None):
+                buffer.write(b)
+                output_func(buffer.getvalue())
+            else:
+                old_write(b)
+
+        try:
+            src.write = new_write
+            yield
+        finally:
+            src.write = old_write
+
+@contextmanager
+def st_stdout(dst):
+    with st_redirect(sys.stdout, dst):
+        yield
+
+
+@contextmanager
+def st_stderr(dst):
+    with st_redirect(sys.stderr, dst):
+        yield
 
 ## streamlit page set-up
 st.set_page_config(page_title="Group 12 Cache Project", page_icon=":floppy_disk:")
@@ -22,3 +60,6 @@ with st.container():
     if st.button("Start", type="primary"):
         cache = cch.create_cache(cache_blocks, cache_lines)
         memory = mem.create_memory(cache_lines, memory_blocks)
+
+with st_stdout("code"):
+    print("Prints as st.code()")
