@@ -1,6 +1,6 @@
 from contextlib import contextmanager
 from io import StringIO
-from streamlit.report_thread import REPORT_CONTEXT_ATTR_NAME
+from streamlit.scriptrunner.script_run_context import SCRIPT_RUN_CONTEXT_ATTR_NAME
 from threading import current_thread
 import sys
 import streamlit as st
@@ -29,7 +29,6 @@ with st.container():
         cache = cch.create_cache(cache_blocks, cache_lines)
         memory = mem.create_memory(cache_lines, memory_blocks)
 
-
 @contextmanager
 def st_redirect(src, dst):
     placeholder = st.empty()
@@ -39,7 +38,7 @@ def st_redirect(src, dst):
         old_write = src.write
 
         def new_write(b):
-            if getattr(current_thread(), REPORT_CONTEXT_ATTR_NAME, None):
+            if getattr(current_thread(), SCRIPT_RUN_CONTEXT_ATTR_NAME, None):
                 buffer.write(b)
                 output_func(buffer.getvalue())
             else:
