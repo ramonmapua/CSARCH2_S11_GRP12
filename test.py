@@ -38,17 +38,19 @@ for mem_address in range(memory_blocks * cache_lines):
     cch_line = mem_address % cache_lines
 
     # Debug Log
-    # print("A: %04d, %04d" % ((mem_address // block_size), mem_address))
-    # print("C: %04d, %04d\n" % (cch_block, cch_line))
+    print("A: %04d, %04d" % ((mem_address // block_size), mem_address))
+    print("C: %04d, %04d" % (cch_block, cch_line))
     #print(str(cch_block) + ', ' + str(cch_line) + '\n')
     
     if cache['access_cache'](cch_block, cch_line) == mem_value:
         cnt_hit += 1
-        print("Cache Hit.")
+        print("Cache Hit.\n")
     else:
         # Do update cache
         cache['update_cache'](cch_block, cch_line, mem_value)
         cnt_miss += 1
+        print("\n")
+
 print("\n")
 
 print("Misses:" + str(cnt_miss) + "\n")
