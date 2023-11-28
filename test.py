@@ -4,7 +4,7 @@ import cache as cch
 
 cache_blocks = 32
 cache_lines = 16
-memory_blocks = 256
+memory_blocks = 128
 
 # Init Cache
 cache = cch.create_cache(cache_blocks, cache_lines)
@@ -29,10 +29,12 @@ for mem_address in range(4 * cache_blocks * cache_lines):
         break
 
     mem_value = rnd.randint(0, 254)
-    memory['update_memory'](mem_address, mem_value)  
+    memory['update_memory'](mem_address, mem_value)
 
+# Initialize Counters
+cnt_mem_access = 0
 cnt_miss = 0
-cnt_hit = 0  
+cnt_hit = 0
 
 # Direct Mapping
 for mem_address in range(memory_blocks * cache_lines):
@@ -44,6 +46,7 @@ for mem_address in range(memory_blocks * cache_lines):
 
     # store curren mem_address value
     mem_value = memory['access_memory'](mem_address)
+    cnt_mem_access += 1
     cch_value = cache['access_cache'](cch_block, cch_line)
 
     # # Debug Log
@@ -64,7 +67,16 @@ for mem_address in range(memory_blocks * cache_lines):
     # else:
     #     print("")
 
-print("Misses: %-4d" % (cnt_miss))
-print("Hits: %-4d\n" % (cnt_hit))
+mem_read_time = 10
+mem_write_time = 10
+cch_read_time = 1
+cch_write_time = 1
+
+cnt_hmtotal = cnt_hit + cnt_miss
+
+print("Memory Access Count: %-4d" % (cnt_mem_access))
+print("Misses: %-4d (%3.2f%%)" % (cnt_miss, cnt_miss / cnt_hmtotal * 100))
+print("Hits: %-4d (%3.2f%%)\n" % (cnt_hit, cnt_hit/ cnt_hmtotal * 100))
+
 
 cache['display_cache']()
