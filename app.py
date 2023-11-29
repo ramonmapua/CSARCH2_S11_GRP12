@@ -69,6 +69,8 @@ with st.container():
                 elif mem_value > (cache_blocks * 2) - 1:
                     mem_value = 0
                     loops = 0
+                else:
+                    mem_value += 1
                 
 
                 memory['update_memory'](mem_address, mem_value)
