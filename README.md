@@ -46,7 +46,7 @@ This project has the following specifications:
 * up to 2n cache block. Repeat the sequence four times. Example: 0,1,2,3,…,2n-1 {4x} 
 
 
-**Main Memory: 8 Blocks**
+**Main Memory: 64 Blocks**
 
 ![Main Memory TC1](images/MM_TC1.png)
 
@@ -54,6 +54,7 @@ This project has the following specifications:
 **Cache**
 
 ![Cache TC1](images/C_TC1.png)
+
 
 1. The data on our main memory looks like that because  **2(32) == 64**. The pattern is simply sequential and since there are **16 words per block**, therefore: 
 * ***main memory block 1** takes data 0-15 
@@ -81,7 +82,25 @@ Ultimately, the pattern of the data goes:
 
 
 ### Test Case 2:  
+* Random sequence: containing 4n blocks.
 
+**Main Memory: 128 Blocks**
+
+![Main Memory TC2](images/MM_TC2.png)
+
+
+**Cache**
+
+![Cache TC2](images/C_TC2.png)
+
+
+1. First we populate the Main Memory with random numbers. We limited the numbers from 0-254 so that the values aren't too big.
+
+
+2. The sequence start with the first data till the last data (cache lines 1-16)  ***main memory block 1**. You basically iterate through the main memory and check if it is in the cache. Since the numbers are random, the **hit rate** is very low and the **miss rate**(even if we limited the numbers from 0 to 254). 
+
+
+3. Lastly, if you look at the ***main memory blocks 96-128***, its the same as the ***cache memory***.
 
 ### Test Case 3: 
 Mid-repeat blocks: Start at block 0, repeat the sequence in the middle two times up to n-1 blocks, after
