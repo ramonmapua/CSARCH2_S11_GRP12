@@ -47,8 +47,6 @@ with st.container():
                 mem_value = rnd.randint(0, 254)
                 memory['update_memory'](mem_address, mem_value)
 
-        memory['display_memory']()
-
         # Initialize Counters
         cnt_mem_access = 0
         cnt_miss = 0
@@ -82,8 +80,13 @@ with st.container():
 
         cnt_hmtotal = cnt_hit + cnt_miss
 
+
+        st.subheader("Simulation Stats")
         st.write("Memory Access Count: %-4d" % (cnt_mem_access))
         st.write("Hits: %-4d (%3.2f%%)\n" % (cnt_hit, cnt_hit/ cnt_hmtotal * 100))
         st.write("Misses: %-4d (%3.2f%%)" % (cnt_miss, cnt_miss / cnt_hmtotal * 100))
         
+        st.divider()
+
+        memory['display_memory']()
         cache['display_cache']()
