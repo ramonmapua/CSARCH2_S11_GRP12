@@ -3,9 +3,16 @@ import memory as mem
 import cache as cch
 import random as rnd
 
+# Assumed Constants
 cache_blocks = 32
 cache_lines = 16
 memory_blocks = 0
+
+# Time Constants
+mem_access_time = 10 # Time to access memory (read or write)
+cch_access_time = 1  # Time to access cache (read or write)
+# miss penalty = cache check + memory read * # of words + cache read
+miss_pen_time = cch_access_time + (cache_lines * mem_access_time) + cch_access_time
 
 ## streamlit page set-up
 st.set_page_config(page_title="Group 12 Cache Project", page_icon=":floppy_disk:")
@@ -54,9 +61,6 @@ with st.container():
             for mem_address in range(4 * cache_blocks * cache_lines):
                 if mem_address >= (memory_blocks * cache_lines):
                     break
-                
-                
-
                 # 0 - 31
                 if mem_value < cache_blocks - 1:
                     memory['update_memory'](mem_address, mem_value)
@@ -74,15 +78,13 @@ with st.container():
                     mem_value = 0
                     loops = 0    
                     memory['update_memory'](mem_address, mem_value)
-                       
-
-                
 
         # Initialize Counters
         cnt_mem_access = 0
         cnt_cch_access = 0
         cnt_miss = 0
         cnt_hit = 0
+        total_time = 0
 
         # Direct Mapping
         for mem_address in range(memory_blocks * cache_lines):
@@ -108,11 +110,6 @@ with st.container():
                 else:
                     cnt_hit += 1
 
-        # Time Constants
-        mem_access_time = 1
-        cch_access_time = 1
-        miss_pen_time = 10
-
         rate_hit = 0
         rate_miss = 0
 
@@ -121,12 +118,14 @@ with st.container():
             rate_hit = cnt_hit / cnt_hmtotal
             rate_miss = cnt_miss / cnt_hmtotal
         ave_access_time = (rate_hit * cch_access_time) + ((1 - rate_hit) * miss_pen_time)
+        total_access_time = (cnt_hit * cch_access_time) + (cnt_miss * miss_pen_time)
 
         st.subheader("Simulation Stats")
         st.write("Memory Access Count: %-4d" % (cnt_mem_access))
         st.write("Hits: %-4d (%3.2f%%)\n" % (cnt_hit, rate_hit * 100))
         st.write("Misses: %-4d (%3.2f%%)" % (cnt_miss, rate_miss * 100))
         st.write("Average Access Time: %4.0fns" % (ave_access_time))
+        st.write("Total Access Time: %4.0fns" % (total_access_time))
         
         st.divider()
 
