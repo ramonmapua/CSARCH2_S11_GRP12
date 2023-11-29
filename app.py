@@ -111,7 +111,7 @@ with st.container():
                     cache['update_cache'](cch_block, cch_line, mem_value)
                     cnt_miss += 1
                 else:
-                    str_log += "Cache Hit."
+                    str_log += "Cache Hit.\n"
                     cnt_hit += 1
             
             str_log += "\n"
