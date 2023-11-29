@@ -86,13 +86,13 @@ with st.container():
         cnt_hmtotal = cnt_hit + cnt_miss
         rate_hit = cnt_hit / cnt_hmtotal * 100
         rate_miss = cnt_miss / cnt_hmtotal * 100
-        ave_access_time = rate_hit * cch_access_time + rate_miss * miss_pen_time
+        ave_access_time = rate_hit * cch_access_time + (100 - rate_hit) * miss_pen_time
 
         st.subheader("Simulation Stats")
         st.write("Memory Access Count: %-4d" % (cnt_mem_access))
         st.write("Hits: %-4d (%3.2f%%)\n" % (cnt_hit, rate_hit))
         st.write("Misses: %-4d (%3.2f%%)" % (cnt_miss, rate_miss))
-        st.write("Average Access Time: %3.2f%%" % (ave_access_time))
+        st.write("Average Access Time: %4fns" % (ave_access_time))
         
         st.divider()
 
