@@ -100,8 +100,10 @@ Mid-repeat blocks: Start at block 0, repeat the sequence in the middle two times
 which continue up to 2n. Then, repeat the sequence four times.
 
 Like all the previous test cases up Mid-repeat blocks will also miss until it fills up all the blocks in the cache memory. The first hit will occur at memory block 33, where the memory block will match the first two blocks of the cache memory, or up until memory block 34, where it will match the sequence 0\~31.
-Afterwards, a miss will occur for memory blocks 35 to 38, and a hit will occur in memory blocks 39 to 40 matching the same elements from 031. It then follows a pattern where, after 2 blocks of hitting
+Afterwards, a miss will occur for memory blocks 35 to 38, and a hit will occur in memory blocks 39 to 40 matching the same elements from 0\~31. It then follows a pattern where, after 2 blocks of hitting
 The following 4 blocks would miss, and after the 4th block, the 5th block to the 6th block or the following 2 blocks would hit.
 The same pattern occurs after traversing the whole cache memory only the elements 0\~31 would hit.
 
-To get the Main Memory block where a hit would occur
+To check if a hit would occur on a given memory block:
+**if (Main Memory Block - 32) % 6 == 1 || (Main Memory Block - 32) % 6 == 2**
+
