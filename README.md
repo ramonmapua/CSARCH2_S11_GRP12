@@ -48,8 +48,7 @@ This project has the following specifications:
 
 **Main Memory: 8 Blocks**
 
-![Main Memory TC1.1](images/MM_TC1.1.png)
-![Main Memory TC1.2](images/MM_TC1.2.png)
+![Main Memory TC1](images/MM_TC1.png)
 
 
 **Cache**
