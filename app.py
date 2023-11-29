@@ -19,7 +19,10 @@ with st.container():
     st.write("Cache line = ", cache_lines)
     st.write("Read policy = Non-Load Through")
     memory_blocks = st.number_input("Enter number of memory blocks: ", min_value=1, value=1, placeholder="Enter a number...")
-    if st.button("Create Memory", type="primary"):
+
+    test_case = st.selectbox('Select a test case:', ('Empty', 'Test Case 1', 'Test Case 2', 'Test Case 3'), index=0)
+
+    if st.button("Create", type="primary"):
         cache = cch.create_cache(cache_blocks, cache_lines)
         memory = mem.create_memory(cache_lines, memory_blocks)
         memory['display_memory']()
