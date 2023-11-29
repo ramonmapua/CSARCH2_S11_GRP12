@@ -1,6 +1,7 @@
 import streamlit as st
 import memory as mem
 import cache as cch
+import random as rnd
 
 cache_blocks = 32
 cache_lines = 16
