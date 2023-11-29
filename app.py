@@ -125,7 +125,7 @@ with st.container():
             rate_hit = cnt_hit / cnt_hmtotal
             rate_miss = cnt_miss / cnt_hmtotal
         ave_access_time = (rate_hit * cch_access_time) + (rate_miss * miss_pen_time)
-        total_access_time = (cnt_hit * cch_access_time) + (cnt_miss * miss_pen_time)
+        total_access_time = (cnt_hit * cch_access_time * cache_lines) + (cnt_miss * miss_pen_time)
 
         st.subheader("Simulation Stats")
         st.write("Memory Access Count: %-4d" % (cnt_hmtotal))
