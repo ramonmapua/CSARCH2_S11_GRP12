@@ -30,8 +30,8 @@ def create_memory(cache_lines, memory_blocks):
     # Display Entire Memory
     def display_memory():
         string = ""
-        for block in memory_blocks:
-            for line in cache_lines:
+        for block in range(memory_blocks):
+            for line in range(cache_lines):
                 string += memory_queue[(block * memory_blocks + line)]
             string += "\n"
 
