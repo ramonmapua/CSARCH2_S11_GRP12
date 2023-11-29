@@ -25,4 +25,25 @@ with st.container():
     if st.button("Create", type="primary"):
         cache = cch.create_cache(cache_blocks, cache_lines)
         memory = mem.create_memory(cache_lines, memory_blocks)
+
+        if test_case == 'Test Case 1':
+            # Fill memory sequential up 2n times
+            mem_value = 0
+            for mem_address in range(2 * cache_blocks * cache_lines):
+                if mem_address >= (memory_blocks * cache_lines):
+                    break
+                memory['update_memory'](mem_address, mem_value)
+                if mem_value < (cache_blocks * 2) - 1:
+                    mem_value += 1
+                else:
+                    mem_value = 0
+        elif test_case == 'Test Case 2':
+            # Fill memory random up 4n times
+            for mem_address in range(4 * cache_blocks * cache_lines):
+                if mem_address >= (memory_blocks * cache_lines):
+                    break
+
+                mem_value = rnd.randint(0, 254)
+                memory['update_memory'](mem_address, mem_value)
+
         memory['display_memory']()
