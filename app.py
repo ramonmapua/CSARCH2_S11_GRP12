@@ -52,8 +52,11 @@ with st.container():
             mem_value = 0
             loops = 0
             for mem_address in range(4 * cache_blocks * cache_lines):
+                if mem_address >= (memory_blocks * cache_lines):
+                    break
+
                 # Calculate the index within the repeating pattern (0-31, 0-31, 31-63)
-                pattern_index = mem_address % (2 * cache_blocks) - 1
+                pattern_index = mem_address % (2 * cache_blocks)
                 
                 # Determine the memory value based on the pattern index
                 if pattern_index < cache_blocks:
