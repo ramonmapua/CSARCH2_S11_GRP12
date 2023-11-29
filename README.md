@@ -10,6 +10,7 @@ Group Members:
 * [FUENTESPINA, AIAN JAMES TAYAG](https://github.com/4thDimensionDuck)
 * [MAPUA, RAMON ANTONIO LUIS HARPER](https://github.com/ramonmapua)
 
+This Cache Simulation Project was built using the Python programming language and libraries listed below.
 This project is built to accurately emulate cache interactions, enabling users to gain insights into the following values:
 1. Memory access count
 2. Cache hit count
