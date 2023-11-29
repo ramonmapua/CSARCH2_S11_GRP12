@@ -29,9 +29,18 @@ def create_memory(cache_lines, memory_blocks):
 
     # Display Entire Memory
     def display_memory():
-        with st.container():
-            for block in memory_queue:
-                st.write(block)
+        string = ""
+        for block in memory_blocks:
+            for line in cache_lines:
+                string += memory_queue[(block * memory_blocks + cache_lines)]
+            string += "\n"
+
+        st.write(string)
+            
+
+        # with st.container():
+        #     for block in memory_queue:
+        #         st.write(block)
 
     # Dictionary of Functions
     return {
