@@ -32,7 +32,7 @@ def create_memory(cache_lines, memory_blocks):
         string = ""
         for block in memory_blocks:
             for line in cache_lines:
-                string += memory_queue[(block * memory_blocks + cache_lines)]
+                string += memory_queue[(block * memory_blocks + line)]
             string += "\n"
 
         st.write(string)
