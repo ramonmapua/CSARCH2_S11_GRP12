@@ -1,3 +1,4 @@
+import streamlit as st
 from collections import deque
 
 def create_cache(cache_blocks, cache_lines):
@@ -25,8 +26,15 @@ def create_cache(cache_blocks, cache_lines):
 
     # Display Entire Cache
     def display_cache():
-        for block in cache_queue:
-            print(block)
+        with st.container():
+            st.write("Memory:")
+            string = " "
+            for block in range(cache_blocks):
+                for line in range(cache_lines):
+                    string += "{:<5}".format(str(cache_queue[block][line]))
+                string += "\n"
+
+            st.code(string)
 
     # Dictionary of Functions
     return {
