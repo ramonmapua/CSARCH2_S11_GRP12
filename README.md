@@ -130,7 +130,7 @@ To check if a hit would occur on a given memory block:
 Finally, at 128 memory blocks the simulation stats for Test Case 3:
 
 **Memory Access Count**: 2048  
-**Hits:** 512 addresses or 32 blocks (25.00%)
-**Misses:** 1536 addresses or 96 blocks (75.00%)
-**Average Access Time:** 122ns
+**Hits:** 512 addresses or 32 blocks (25.00%)  
+**Misses:** 1536 addresses or 96 blocks (75.00%)  
+**Average Access Time:** 122ns  
 **Total Access Time:** 257024ns
