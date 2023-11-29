@@ -26,16 +26,15 @@ def create_cache(cache_blocks, cache_lines):
 
     # Display Entire Cache
     def display_cache():
-        with st.sidebar():
-            with st.expander():
-                st.write("Cache:")
-                string = " "
-                for block in range(cache_blocks):
-                    for line in range(cache_lines):
-                        string += "{:<5}".format(str(cache_queue[block][line]))
-                    string += "\n"
+        with st.expander():
+            st.write("Cache:")
+            string = " "
+            for block in range(cache_blocks):
+                for line in range(cache_lines):
+                    string += "{:<5}".format(str(cache_queue[block][line]))
+                string += "\n"
 
-                st.code(string)
+            st.code(string)
 
     # Dictionary of Functions
     return {
