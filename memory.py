@@ -29,7 +29,7 @@ def create_memory(cache_lines, memory_blocks):
 
     # Display Entire Memory
     def display_memory():
-        with st.container():
+        with st.expander():
             st.write("Memory:")
             string = " "
             for block in range(memory_blocks):
