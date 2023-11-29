@@ -110,8 +110,9 @@ with st.container():
         miss_pen_time = 10
 
         cnt_hmtotal = cnt_hit + cnt_miss
-        rate_hit = cnt_hit / cnt_hmtotal
-        rate_miss = cnt_miss / cnt_hmtotal
+        if cnt_hmtotal > 0:
+            rate_hit = cnt_hit / cnt_hmtotal
+            rate_miss = cnt_miss / cnt_hmtotal
         ave_access_time = (rate_hit * cch_access_time) + ((1 - rate_hit) * miss_pen_time)
 
         st.subheader("Simulation Stats")
