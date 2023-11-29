@@ -23,6 +23,8 @@ with st.container():
 
     test_case = st.selectbox('Select a test case:', ('Empty', 'Test Case 1', 'Test Case 2', 'Test Case 3'), index=0)
 
+    st.divider()
+
     if st.button("Create and Simulate", type="primary"):
         cache = cch.create_cache(cache_blocks, cache_lines)
         memory = mem.create_memory(cache_lines, memory_blocks)
@@ -49,6 +51,7 @@ with st.container():
 
         # Initialize Counters
         cnt_mem_access = 0
+        cnt_cch_access = 0
         cnt_miss = 0
         cnt_hit = 0
 
@@ -61,30 +64,35 @@ with st.container():
             cch_line = mem_address % cache_lines
 
             # store curren mem_address value
-            mem_value = memory['access_memory'](mem_address)
-            cnt_mem_access += 1
-            cch_value = cache['access_cache'](cch_block, cch_line)
-
             if mem_value != None:
-                # if cache hit
+                mem_value = memory['access_memory'](mem_address)
+                cnt_mem_access += 1
+                cch_value = cache['access_cache'](cch_block, cch_line)
+                cnt_cch_access += 1
+
+                # if cache miss
                 if cch_value != mem_value:
                     cache['update_cache'](cch_block, cch_line, mem_value)
+                    cnt_cch_access += 1
                     cnt_miss += 1
                 else:
                     cnt_hit += 1
 
-        mem_read_time = 10
-        mem_write_time = 10
-        cch_read_time = 1
-        cch_write_time = 1
+        # Time Constants
+        mem_access_time = 1
+        cch_access_time = 1
+        miss_pen_time = 10
 
         cnt_hmtotal = cnt_hit + cnt_miss
-
+        rate_hit = cnt_hit / cnt_hmtotal * 100
+        rate_miss = cnt_miss / cnt_hmtotal * 100
+        ave_access_time = rate_hit * cch_access_time + rate_miss * miss_pen_time
 
         st.subheader("Simulation Stats")
         st.write("Memory Access Count: %-4d" % (cnt_mem_access))
-        st.write("Hits: %-4d (%3.2f%%)\n" % (cnt_hit, cnt_hit/ cnt_hmtotal * 100))
-        st.write("Misses: %-4d (%3.2f%%)" % (cnt_miss, cnt_miss / cnt_hmtotal * 100))
+        st.write("Hits: %-4d (%3.2f%%)\n" % (cnt_hit, rate_hit))
+        st.write("Misses: %-4d (%3.2f%%)" % (cnt_miss, rate_miss))
+        st.write("Average Access Time: %3.2f%%" % (ave_access_time))
         
         st.divider()
 
