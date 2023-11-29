@@ -109,6 +109,9 @@ with st.container():
         cch_access_time = 1
         miss_pen_time = 10
 
+        rate_hit = 0
+        rate_miss = 0
+
         cnt_hmtotal = cnt_hit + cnt_miss
         if cnt_hmtotal > 0:
             rate_hit = cnt_hit / cnt_hmtotal
