@@ -55,13 +55,13 @@ with st.container():
                 if mem_address >= (memory_blocks * cache_lines):
                     break
                 
-                memory['update_memory'](mem_address, mem_value)
-
                 # 0 - 31
                 if mem_value < cache_blocks - 1:
+                    memory['update_memory'](mem_address, mem_value)
                     mem_value += 1
                 # 32 - 63
                 elif (mem_value >= cache_blocks - 1) & (mem_value < (cache_blocks * 2)):
+                    memory['update_memory'](mem_address, mem_value)
                     if loops < 1:
                         mem_value = 0
                         loops += 1
