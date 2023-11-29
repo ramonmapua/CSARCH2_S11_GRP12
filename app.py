@@ -100,7 +100,8 @@ with st.container():
             cch_value = cache['access_cache'](cch_block, cch_line)
             cnt_mem_access += 1
 
-            str_log += "M: ({:>04}, {:>04}), {:>04}\n".format(str((mem_address // block_size)), str(mem_address), str(mem_value))
+            str_log += "Address: {:>04}\n".format(str(mem_address))
+            str_log += "M: ({:>04}, {:>04}), {:>04}\n".format(str((mem_address // block_size)), str(mem_address % cache_lines), str(mem_value))
             str_log += "C: ({:>04}, {:>04}), {:>04}\n".format(str(cch_block), str(cch_line), str(cch_value))
             
 
