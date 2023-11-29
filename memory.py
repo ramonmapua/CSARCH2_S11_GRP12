@@ -29,7 +29,7 @@ def create_memory(cache_lines, memory_blocks):
 
     # Display Entire Memory
     def display_memory():
-        with st.container:
+        with st.container():
             for block in memory_queue:
                 st.write(block)
 
