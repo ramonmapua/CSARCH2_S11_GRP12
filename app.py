@@ -23,9 +23,9 @@ with st.container():
 
     test_case = st.selectbox('Select a test case:', ('Empty', 'Test Case 1', 'Test Case 2', 'Test Case 3'), index=0)
 
-    st.divider()
-
     if st.button("Create and Simulate", type="primary"):
+        st.divider()
+        
         cache = cch.create_cache(cache_blocks, cache_lines)
         memory = mem.create_memory(cache_lines, memory_blocks)
 
@@ -92,7 +92,7 @@ with st.container():
         st.write("Memory Access Count: %-4d" % (cnt_mem_access))
         st.write("Hits: %-4d (%3.2f%%)\n" % (cnt_hit, rate_hit))
         st.write("Misses: %-4d (%3.2f%%)" % (cnt_miss, rate_miss))
-        st.write("Average Access Time: %4fns" % (ave_access_time))
+        st.write("Average Access Time: %4.0fns" % (ave_access_time))
         
         st.divider()
 

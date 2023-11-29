@@ -29,7 +29,7 @@ def create_memory(cache_lines, memory_blocks):
 
     # Display Entire Memory
     def display_memory():
-        with st.expander("See Final Memory Snapshot"):
+        with st.expander("See Memory"):
             string = " "
             for block in range(memory_blocks):
                 for line in range(cache_lines):
