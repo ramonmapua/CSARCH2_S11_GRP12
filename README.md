@@ -43,7 +43,7 @@ This project has the following specifications:
 
 
 **Main Memory: 8 Blocks**
-
+![Main Memory Test Case #1](MM_TC1.png)
 
 **Cache**
 
