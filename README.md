@@ -84,6 +84,14 @@ Ultimately, the pattern of the data goes:
 
 
 ### Test Case 3: 
+**Memory**
+![Memory1 TC3](images/MM_TC3_1.png)
+![Memory2 TC3](images/MM_TC3_2.png)
+![Memory3 TC3](images/MM_TC3_3.png)
+![Memory4 TC3](images/MM_TC3_4.png)
+**Cache**
+![Cache TC3](images/CM_TC3.png)
+
 Mid-repeat blocks: Start at block 0, repeat the sequence in the middle two times up to n-1 blocks, after
 which continue up to 2n. Then, repeat the sequence four times.
 
