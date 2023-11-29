@@ -49,26 +49,21 @@ with st.container():
                 mem_value = rnd.randint(0, 254)
                 memory['update_memory'](mem_address, mem_value)
         elif test_case == 'Test Case 3':
-            # Repeat 4 times
             mem_value = 0
             loops = 0
             for mem_address in range(4 * cache_blocks * cache_lines):
                 if mem_address >= (memory_blocks * cache_lines):
                     break
-                if loops < 2:
-                    if mem_value < cache_blocks:
-                        mem_value += 1
-                    else:
-                        mem_value = 0
+
+                if (loops < 2) & mem_value >= cache_blocks - 1:
+                    mem_value = 0
                     loops += 1
+                elif mem_value < (cache_blocks * 2) - 1:
+                    mem_value += 1
                 else:
-                    if mem_value < cache_blocks * 2:
-                        mem_value += 1
-                    else:
-                        mem_value = 0
+                    mem_value = 0
+                    loops = 0
                 memory['update_memory'](mem_address, mem_value)
-
-
 
         # Initialize Counters
         cnt_mem_access = 0
