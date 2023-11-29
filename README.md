@@ -104,7 +104,7 @@ Ultimately, the pattern of the data goes:
 
 ### Test Case 3: 
 
-**Memory**
+**Main Memory: 128 blocks**
 
 ![Memory1 TC3](images/MM_TC3_1.png)
 ![Memory2 TC3](images/MM_TC3_2.png)
