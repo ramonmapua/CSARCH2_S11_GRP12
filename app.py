@@ -86,10 +86,11 @@ with st.container():
             # cache line of address (where it will go)
             cch_line = mem_address % cache_lines
 
+            mem_value = memory['access_memory'](mem_address)
+            cnt_mem_access += 1
+
             # store curren mem_address value
             if mem_value != None:
-                mem_value = memory['access_memory'](mem_address)
-                cnt_mem_access += 1
                 cch_value = cache['access_cache'](cch_block, cch_line)
                 cnt_cch_access += 1
 
