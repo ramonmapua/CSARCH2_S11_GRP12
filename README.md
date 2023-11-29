@@ -40,11 +40,17 @@ This project has the following specifications:
 
 ### Test Case 1:
 * up to 2n cache block. Repeat the sequence four times. Example: 0,1,2,3,…,2n-1 {4x} 
-**Specific Specifications**
-1. Memory Blocks: 8 
 
 
-**Test Case 2:** - 
+**Main Memory: 8 Blocks**
 
-**Test Case 3:** - 
+
+**Cache**
+
+
+
+### Test Case 2:  
+
+
+### Test Case 3: 
 

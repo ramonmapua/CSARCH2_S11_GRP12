@@ -15,7 +15,7 @@ cch_access_time = 1  # Time to access cache (read or write)
 miss_pen_time = cch_access_time + (cache_lines * mem_access_time) + cch_access_time
 
 ## streamlit page set-up
-st.set_page_config(page_title="Group 12 Cache Project", page_icon=":floppy_disk:")
+st.set_page_config(page_title="Group 12 Cache Project", page_icon=":floppy_disk:", layout="wide")
 
 # Header Section
 st.title("Cache Simulation Project")
