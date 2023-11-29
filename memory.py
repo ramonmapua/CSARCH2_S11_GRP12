@@ -31,7 +31,7 @@ def create_memory(cache_lines, memory_blocks):
     def display_memory():
         with st.container():
             st.write("Memory:")
-            string = ""
+            string = " "
             for block in range(memory_blocks):
                 for line in range(cache_lines):
                     string += "{:>4} ".format(str(memory_queue[block][line]))
