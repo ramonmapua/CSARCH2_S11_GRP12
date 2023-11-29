@@ -100,8 +100,8 @@ with st.container():
             cch_value = cache['access_cache'](cch_block, cch_line)
             cnt_mem_access += 1
 
-            str_log += "A: {:>04}, {:>04}, {:>04}\n".format((mem_address // block_size), mem_address, mem_value)
-            str_log += "C: {:>04}, {:>04}, {:>04}\n".format(cch_block, cch_line, cch_value)
+            str_log += "A: {:>04}, {:>04}, {:>04}\n".format(str((mem_address // block_size)), str(mem_address), str(mem_value))
+            str_log += "C: {:>04}, {:>04}, {:>04}\n".format(str(cch_block), str(cch_line), str(cch_value))
 
             # store curren mem_address value
             if mem_value != None:
