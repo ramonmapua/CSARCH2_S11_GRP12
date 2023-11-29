@@ -1,6 +1,9 @@
 # CSARCH2_S11_GRP12
 Cache Simulation Project for CSARCH2 made by Group 12 of Section S11
 
+## Access Link
+[Webapp](https://csarch2s11grp12.streamlit.app/)
+
 Group Members:
 * [CLEMENTE, ANDRES FRONDA](https://github.com/piptxt)
 * [CULANAG, SAIMON RUSSEL WOODS](https://github.com/Sai-RWC)
@@ -22,7 +25,7 @@ This project also has the option to display the cache memory snapshot in a step-
 This project has the following dependencies:
 
 * **Streamlit** - in order to host this application through the internet, this project utilizes the Streamlit library.
-* **Doubly Ended Queue** - in order to append and pop items from the cache in O(1) time.
+* **Doubly Ended Queue** - Used to simulate memory and cache.
 * **random** - in order to randomly generate blocks for test cases, random was imported.
 
 ## Common Specifications:
