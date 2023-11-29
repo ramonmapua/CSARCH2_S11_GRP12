@@ -54,4 +54,6 @@ This project has the following specifications:
 
 
 ### Test Case 3: 
+Mid-repeat blocks: Start at block 0, repeat the sequence in the middle two times up to n-1 blocks, after
+which continue up to 2n. Then, repeat the sequence four times.
 
