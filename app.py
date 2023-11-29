@@ -100,8 +100,9 @@ with st.container():
             cch_value = cache['access_cache'](cch_block, cch_line)
             cnt_mem_access += 1
 
-            str_log += "A: {:>04}, {:>04}, {:>04}\n".format(str((mem_address // block_size)), str(mem_address), str(mem_value))
-            str_log += "C: {:>04}, {:>04}, {:>04}\n".format(str(cch_block), str(cch_line), str(cch_value))
+            str_log += "M: ({:>04}, {:>04}), {:>04}\n".format(str((mem_address // block_size)), str(mem_address), str(mem_value))
+            str_log += "C: ({:>04}, {:>04}), {:>04}\n".format(str(cch_block), str(cch_line), str(cch_value))
+            
 
             # store curren mem_address value
             if mem_value != None:
@@ -110,7 +111,10 @@ with st.container():
                     cache['update_cache'](cch_block, cch_line, mem_value)
                     cnt_miss += 1
                 else:
+                    str_log += "Cache Hit."
                     cnt_hit += 1
+            
+            str_log += "\n"
 
         rate_hit = 0
         rate_miss = 0
