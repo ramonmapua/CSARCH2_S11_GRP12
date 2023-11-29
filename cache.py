@@ -26,7 +26,7 @@ def create_cache(cache_blocks, cache_lines):
 
     # Display Entire Cache
     def display_cache():
-        with st.expander():
+        with st.expander("See Memory"):
             st.write("Cache:")
             string = " "
             for block in range(cache_blocks):
