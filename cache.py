@@ -33,7 +33,7 @@ def create_cache(cache_blocks, cache_lines):
                     string += "{:<5}".format(str(cache_queue[block][line]))
                 string += "\n"
 
-            st.code(string)
+            st.code(string, line_numbers=True)
 
     # Dictionary of Functions
     return {

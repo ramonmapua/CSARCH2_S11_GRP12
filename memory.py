@@ -36,7 +36,7 @@ def create_memory(cache_lines, memory_blocks):
                     string += "{:<5}".format(str(memory_queue[block][line]))
                 string += "\n"
 
-            st.code(string)
+            st.code(string, line_numbers=True)
 
     # Dictionary of Functions
     return {
