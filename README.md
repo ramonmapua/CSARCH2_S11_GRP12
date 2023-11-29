@@ -124,6 +124,7 @@ The following 4 blocks would miss, and after the 4th block, the 5th block to the
 The same pattern occurs after traversing the whole cache memory only the elements 0\~31 would hit.
 
 To check if a hit would occur on a given memory block:
+
 **if (Main Memory Block - 32) % 6 == 1 || (Main Memory Block - 32) % 6 == 2**
 
 Finally, at 128 memory blocks the simulation stats for Test Case 3:
