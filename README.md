@@ -37,3 +37,10 @@ This project has the following specifications:
 5. Type of cache memory = **direct mapping**
    
 ## Test Cases and Analysis:
+
+* **Test Case 1:**
+- 
+* **Test Case 2:**
+- 
+* **Test Case 3:**
+- 
