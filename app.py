@@ -75,9 +75,10 @@ with st.container():
                         mem_value += 1
                 # 64+
                 elif mem_value >= (cache_blocks * 2) - 1:
+                    memory['update_memory'](mem_address, mem_value)
                     mem_value = 0
                     loops = 0    
-                    memory['update_memory'](mem_address, mem_value)
+                    
 
         # Initialize Counters
         cnt_mem_access = 0
