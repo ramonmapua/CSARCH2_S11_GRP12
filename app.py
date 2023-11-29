@@ -58,10 +58,10 @@ with st.container():
                 memory['update_memory'](mem_address, mem_value)
 
                 # 0 - 31
-                if mem_value < cache_blocks:
+                if mem_value < cache_blocks - 1:
                     mem_value += 1
                 # 32 - 63
-                elif (mem_value >= cache_blocks) & (mem_value < (cache_blocks * 2)):
+                elif (mem_value >= cache_blocks - 1) & (mem_value <= (cache_blocks * 2) - 1):
                     if loops < 1:
                         mem_value = 0
                         loops += 1
