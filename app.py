@@ -61,7 +61,7 @@ with st.container():
                 if mem_value < cache_blocks - 1:
                     mem_value += 1
                 # 32 - 63
-                elif (mem_value >= cache_blocks - 1) & (mem_value <= (cache_blocks * 2) - 1):
+                elif (mem_value >= cache_blocks - 1) & (mem_value < (cache_blocks * 2)):
                     if loops < 1:
                         mem_value = 0
                         loops += 1
