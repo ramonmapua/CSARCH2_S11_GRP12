@@ -82,10 +82,11 @@ with st.container():
 
         # Initialize Counters
         cnt_mem_access = 0
-        cnt_cch_access = 0
         cnt_miss = 0
         cnt_hit = 0
         total_time = 0
+
+        str_log = "Block, Line, Value\n"
 
         # Direct Mapping
         for mem_address in range(memory_blocks * cache_lines):
@@ -96,17 +97,17 @@ with st.container():
             cch_line = mem_address % cache_lines
 
             mem_value = memory['access_memory'](mem_address)
+            cch_value = cache['access_cache'](cch_block, cch_line)
             cnt_mem_access += 1
+
+            str_log += "A: %04d, %04d, %-4d\n" % ((mem_address // block_size), mem_address, mem_value)
+            str_log += ("C: %04d, %04d\n\n" % (cch_block, cch_line, cch_value))
 
             # store curren mem_address value
             if mem_value != None:
-                cch_value = cache['access_cache'](cch_block, cch_line)
-                cnt_cch_access += 1
-
                 # if cache miss
                 if cch_value != mem_value:
                     cache['update_cache'](cch_block, cch_line, mem_value)
-                    cnt_cch_access += 1
                     cnt_miss += 1
                 else:
                     cnt_hit += 1
@@ -132,3 +133,5 @@ with st.container():
 
         memory['display_memory']()
         cache['display_cache']()
+        with st.expander("See Path Trace"):
+            st.code(str_log, line_numbers=True)
