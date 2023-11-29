@@ -2,7 +2,10 @@
 Cache Simulation Project for CSARCH2 made by Group 12 of Section S11
 
 ## Access Link
-[Webapp](https://csarch2s11grp12.streamlit.app/)
+[Web Application](https://csarch2s11grp12.streamlit.app/)
+
+## Demo Video
+[Demo Video](https://drive.google.com/file/d/1jlmixLLT2NWV2m8qQMv-LfvZki6iYtx9/view?usp=sharing)
 
 Group Members:
 * [CLEMENTE, ANDRES FRONDA](https://github.com/piptxt)
@@ -10,6 +13,7 @@ Group Members:
 * [FUENTESPINA, AIAN JAMES TAYAG](https://github.com/4thDimensionDuck)
 * [MAPUA, RAMON ANTONIO LUIS HARPER](https://github.com/ramonmapua)
 
+This Cache Simulation Project was built using the Python programming language and libraries listed below.
 This project is built to accurately emulate cache interactions, enabling users to gain insights into the following values:
 1. Memory access count
 2. Cache hit count
@@ -81,4 +85,6 @@ Ultimately, the pattern of the data goes:
 
 
 ### Test Case 3: 
+Mid-repeat blocks: Start at block 0, repeat the sequence in the middle two times up to n-1 blocks, after
+which continue up to 2n. Then, repeat the sequence four times.
 
