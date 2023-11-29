@@ -1,3 +1,4 @@
+import streamlit as st
 from collections import deque
 
 def create_memory(cache_lines, memory_blocks):
@@ -29,7 +30,7 @@ def create_memory(cache_lines, memory_blocks):
     # Display Entire Memory
     def display_memory():
         for block in memory_queue:
-            print(block)
+            st.write(block)
 
     # Dictionary of Functions
     return {

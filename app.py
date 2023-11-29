@@ -18,7 +18,8 @@ with st.container():
     st.write("Cache blocks = ", cache_blocks)
     st.write("Cache line = ", cache_lines)
     st.write("Read policy = Non-Load Through")
-    memory_blocks = st.number_input("Enter number of memory blocks: ", min_value=1, value=None, placeholder="Enter a number...")
-    if st.button("Start", type="primary"):
+    memory_blocks = st.number_input("Enter number of memory blocks: ", min_value=1, value=1, placeholder="Enter a number...")
+    if st.button("Create Memory", type="primary"):
         cache = cch.create_cache(cache_blocks, cache_lines)
         memory = mem.create_memory(cache_lines, memory_blocks)
+        memory['display_memory']()
