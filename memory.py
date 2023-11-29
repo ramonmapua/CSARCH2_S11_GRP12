@@ -34,7 +34,8 @@ def create_memory(cache_lines, memory_blocks):
             string = ""
             for block in range(memory_blocks):
                 for line in range(cache_lines):
-                    string += "%-3d" % str(memory_queue[block][line]) + " "
+                    tmp_string = "{value:.-3d} "
+                    string += tmp_string.format(value=memory_queue[block][line])
                 string += "\n"
 
             st.code(string)
